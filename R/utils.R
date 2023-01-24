@@ -20,9 +20,9 @@ extract_xml <- function(path, force = FALSE) {
   ppt <- basename(path)
   folder <- gsub("\\.pptx", "", ppt)
   tmpdir <- tempdir()
-  if(dir.exists(tmpdir)) {
-    unlink(tmpdir, recursive = TRUE, force = TRUE)
-  }
+  if (dir.exists(file.path(tmpdir, basename(path)))) {
+			unlink(file.path(tmpdir, basename(path)), recursive = TRUE)
+		}
   dir.create(tmpdir, showWarnings = FALSE)
   basepath <- file.path(tmpdir, folder)
 
@@ -130,7 +130,12 @@ extract_title <- function(sld) {
   }
 
   out <- paste("## ", title, "\n")
-  out[!grepl("#   \n", out)]
+  title <- out[!grepl("#   \n", out)]
+
+  if (length(title) == 0L) {
+			title <- paste("## ", "Untitled", "\n")
+		}
+
 }
 
 #' Extract Subtitle from Title Slide
