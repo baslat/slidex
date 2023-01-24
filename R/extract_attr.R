@@ -39,14 +39,14 @@ extract_image <- function(sld, rel) {
     map_chr(basename)
 
     out <- paste0("![](assets/img/", imgs, ")")
-    if(length(out) == 2) {
-      out <- paste0(".pull-left[", out[1], "]", "\n\n",
-                    ".pull-right[", out[2], "]")
-    }
-    if(length(out) > 2) {
-      out <- paste0("\n---\nclass: inverse\nbackground-image: url('assets/img/",
-                    imgs, "')\nbackground-size: cover\n",
-                    collapse = "\n")
-    }
+    # if(length(out) == 2) {
+				#   out <- paste0(".pull-left[", out[1], "]", "\n\n",
+				#                 ".pull-right[", out[2], "]")
+				# }
+				# if(length(out) > 2) {
+				#   out <- paste0("\nclass: inverse\nbackground-image: url('assets/img/",
+				#                 imgs, "')\nbackground-size: cover\n",
+				#                 collapse = "\n")
+				# }
   out
 }
