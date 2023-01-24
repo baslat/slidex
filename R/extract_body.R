@@ -131,7 +131,7 @@ insert_bullets <- function(indented) {
                                                       collapse = ""),
                                                "+ ")),
            spaces = ifelse(.data$bullet == 0, "", .data$spaces),
-           nchar  = map_chr(.data$text, nchar),
+           nchar  = map_chr(.data$text, ~as.character(nchar(.x))),
            text   = paste0(.data$spaces, .data$text)) %>%
     subset(nchar != "0")
 }
@@ -164,4 +164,3 @@ extract_body <- function(sld) {
     insert_bullets() %>%
     body_text()
 }
-
