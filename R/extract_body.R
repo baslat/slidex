@@ -6,8 +6,12 @@ xml_tibble <- function(sld) {
   aps <- map(sps, ~xml_find_all(., "./p:txBody/a:p"))
   classes <- extract_class(sld)
 
+# if classes contains "title" or "ftr" remove them
+if (length(grep("title|ftr", classes)) > 0L) {
   aps <- aps[-grep("title|ftr", classes)]
   nvpr_name <- nvpr_name[-grep("title|ftr", classes)]
+}
+
 
   if(length(aps) == 0) {
     return()
