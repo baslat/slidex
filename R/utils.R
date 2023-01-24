@@ -136,6 +136,8 @@ extract_title <- function(sld) {
 			title <- paste("## ", "Untitled", "\n")
 		}
 
+  title
+
 }
 
 #' Extract Subtitle from Title Slide
