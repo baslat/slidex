@@ -20,9 +20,9 @@ extract_xml <- function(path, force = FALSE) {
   ppt <- basename(path)
   folder <- gsub("\\.pptx", "", ppt)
   tmpdir <- tempdir()
-  if(dir.exists(tmpdir)) {
-    unlink(tmpdir, recursive = TRUE, force = TRUE)
-  }
+  if (dir.exists(file.path(tmpdir, basename(path)))) {
+			unlink(file.path(tmpdir, basename(path)), recursive = TRUE)
+		}
   dir.create(tmpdir, showWarnings = FALSE)
   basepath <- file.path(tmpdir, folder)
 
@@ -129,8 +129,13 @@ extract_title <- function(sld) {
     title <- title[-grep("subTitle", classes)]
   }
 
-  out <- paste("# ", title, "\n")
-  out[!grepl("#   \n", out)]
+  out <- paste("## ", title, "\n")
+  title <- out[!grepl("#   \n", out)]
+
+  if (length(title) == 0L) {
+			title <- paste("## ", "Untitled", "\n")
+		}
+
 }
 
 #' Extract Subtitle from Title Slide
@@ -294,7 +299,7 @@ write_rmd <- function(xml_folder, rmd, slds, rels,
   )
   pmap(list(.x = slds, .y = rels, .z = seq_along(slds)),
        function(.x, .y, .z)
-         cat("\n---",
+         cat("\n",
              extract_title(.x),
              extract_body(.x),
              tribble_code(extract_table(.x), tbl_num = .z),
