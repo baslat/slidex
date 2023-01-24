@@ -129,7 +129,7 @@ extract_title <- function(sld) {
     title <- title[-grep("subTitle", classes)]
   }
 
-  out <- paste("# ", title, "\n")
+  out <- paste("## ", title, "\n")
   out[!grepl("#   \n", out)]
 }
 
@@ -294,7 +294,7 @@ write_rmd <- function(xml_folder, rmd, slds, rels,
   )
   pmap(list(.x = slds, .y = rels, .z = seq_along(slds)),
        function(.x, .y, .z)
-         cat("\n---",
+         cat("\n",
              extract_title(.x),
              extract_body(.x),
              tribble_code(extract_table(.x), tbl_num = .z),

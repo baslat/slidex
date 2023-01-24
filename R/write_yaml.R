@@ -75,21 +75,22 @@ create_yaml <- function(xml_folder, title_sld, author = NULL, title = NULL,
     auth <- paste0("author:\n",
                    paste0("  - ", author, collapse = "\n"))
   }
-  elements <- list("---",
-                   ttl,
-                   sub,
-                   auth,
-                   date,
-                   "output:",
-                   "  xaringan::moon_reader:",
-                   css,
-                   "  lib_dir: libs",
-                   "  nature:",
-                   paste0("    ", hls),
-                   "    highlightLines: true",
-                   "    countIncrementalSlides: false")
+  elements <- list(
+			"---",
+			ttl,
+			sub,
+			auth,
+			date,
+			"output:",
+			"  xaringan::moon_reader:",
+			css,
+			"  lib_dir: libs",
+			"  nature:",
+			paste0("    ", hls),
+			"    highlightLines: true",
+			"    countIncrementalSlides: false",
+		"---")
   elements <- elements[!map_lgl(elements, is.null)]
 
   paste0(elements, collapse = "\n")
 }
-
