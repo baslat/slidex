@@ -133,7 +133,7 @@ insert_bullets <- function(indented) {
   indented %>%
     mutate(spaces = map(.data$indents, ~paste0(paste0(rep("\t", .),
                                                       collapse = ""),
-                                               "+ ")),
+                                               "- ")),
            spaces = ifelse(.data$bullet == 0, "", .data$spaces),
            nchar  = map_chr(.data$text, ~as.character(nchar(.x))),
            text   = paste0(.data$spaces, .data$text)) %>%
