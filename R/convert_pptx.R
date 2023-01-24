@@ -57,7 +57,7 @@ convert_pptx <- function(path, author = NULL, title = NULL, sub = NULL,
   slds <- slds[-1]
   rels <- rels[-1]
 
-  rmd <- file.path(basepath, paste0(folder, ".Rmd"))
+  rmd <- file.path(basepath, paste0(folder, ".qmd"))
 
   sink_error <- withCallingHandlers(
     write_rmd(xml, rmd, slds, rels,
@@ -83,8 +83,4 @@ convert_pptx <- function(path, author = NULL, title = NULL, sub = NULL,
   file.copy(basepath, out_dir, recursive = TRUE)
   unlink(basepath, recursive = TRUE, force = TRUE)
 
-  system(paste(Sys.getenv("R_BROWSER"),
-               file.path(out_dir,
-                         gsub("\\.Rmd", "", basename(rmd)),
-                         basename(rmd))))
 }

@@ -81,14 +81,7 @@ create_yaml <- function(xml_folder, title_sld, author = NULL, title = NULL,
 			sub,
 			auth,
 			date,
-			"output:",
-			"  xaringan::moon_reader:",
-			css,
-			"  lib_dir: libs",
-			"  nature:",
-			paste0("    ", hls),
-			"    highlightLines: true",
-			"    countIncrementalSlides: false",
+			"format: revealjs",
 		"---")
   elements <- elements[!map_lgl(elements, is.null)]
 
