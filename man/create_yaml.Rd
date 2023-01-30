@@ -13,7 +13,8 @@ create_yaml(
   sub = NULL,
   date = Sys.Date(),
   theme = "default",
-  highlightStyle = "github"
+  highlightStyle = "github",
+  format = "revealjs"
 )
 }
 \arguments{
@@ -41,6 +42,8 @@ manipulated after conversion if you want other fonts with a specific theme.}
 
 \item{highlightStyle}{The code highlighting style. Defaults to
 \code{"github"} flavored highlighting}
+
+\item{format}{The format of the slides. Defaults to \code{"revealjs"}.}
 }
 \description{
 Create the \href{https://github.com/yihui/xaringan}{xaringan} YAML Front

@@ -14,7 +14,8 @@ convert_pptx(
   highlightStyle = "github",
   force = FALSE,
   writenotes = TRUE,
-  out_dir = "."
+  out_dir = ".",
+  format = "revealjs"
 )
 }
 \arguments{
@@ -51,6 +52,8 @@ slides? Defaults to \code{TRUE}.}
 
 \item{out_dir}{Optional output directory for the folder containing the RMD
 and corresponding assets. Defaults to the current working directory.}
+
+\item{format}{The format of the slides. Defaults to \code{"revealjs"}.}
 }
 \description{
 Extract xml from pptx

@@ -15,7 +15,8 @@ write_rmd(
   sub,
   date,
   theme,
-  highlightStyle
+  highlightStyle,
+  format
 )
 }
 \arguments{
@@ -51,6 +52,8 @@ manipulated after conversion if you want other fonts with a specific theme.}
 
 \item{highlightStyle}{The code highlighting style. Defaults to
 \code{"github"} flavored highlighting}
+
+\item{format}{The format of the slides. Defaults to \code{"revealjs"}.}
 }
 \description{
 Write Out the \href{https://github.com/yihui/xaringan}{xaringan} RMD File

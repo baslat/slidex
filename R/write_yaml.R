@@ -45,6 +45,7 @@ write_theme <- function(theme) {
 #' manipulated after conversion if you want other fonts with a specific theme.
 #' @param highlightStyle The code highlighting style. Defaults to
 #'   \code{"github"} flavored highlighting
+#' @param format The format of the slides. Defaults to \code{"revealjs"}.
 #' @keywords internal
 
 create_yaml <- function(
@@ -55,7 +56,8 @@ create_yaml <- function(
 	sub = NULL,
 	date = Sys.Date(),
 	theme = "default",
-	highlightStyle = "github"
+	highlightStyle = "github",
+	format = "revealjs"
 				) {
 	if (is.null(author)) {
 		author <- extract_author(xml_folder)
@@ -92,13 +94,15 @@ create_yaml <- function(
 			paste0("  - ", author, collapse = "\n")
 		)
 	}
+format <- paste0("format: ", format)
+
 	elements <- list(
 		"---",
 		ttl,
 		sub,
 		auth,
 		date,
-		"format: revealjs",
+		format,
 		"---"
 	)
 	elements <- elements[!map_lgl(elements, is.null)]

@@ -290,14 +290,14 @@ write_notes <- function(xml_folder) {
 
 write_rmd <- function(xml_folder, rmd, slds, rels,
                       title_sld, author, title, sub, date, theme,
-                      highlightStyle) {
+                      highlightStyle, format) {
 
   sld_notes <- import_notes_xml(xml_folder)
 
   sink(rmd)
   cat(
     create_yaml(xml_folder, title_sld, author, title, sub, date, theme,
-                highlightStyle)
+                highlightStyle, format)
   )
   pmap(list(.x = slds, .y = rels, .z = seq_along(slds)),
        function(.x, .y, .z)
